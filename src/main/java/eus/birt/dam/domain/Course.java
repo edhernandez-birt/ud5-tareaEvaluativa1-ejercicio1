@@ -6,9 +6,10 @@ import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,6 +32,9 @@ public class Course extends BaseEntity{
 	
 	@ManyToMany (mappedBy="courses")
 	private Set<Student> students = new HashSet<>();
+	
+	@ManyToOne @JoinColumn (name = "instructor_id")
+	private Instructor instructor;
 
 	public Course(String name, int credits) {
 		super();
