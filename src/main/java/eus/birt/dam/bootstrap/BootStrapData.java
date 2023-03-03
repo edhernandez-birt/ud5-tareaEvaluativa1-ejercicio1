@@ -68,15 +68,22 @@ public class BootStrapData implements CommandLineRunner{
 		
 //      Termina la tarea de aprendizaje 3 tal y como lo hemos hecho en la tarea evaluativa de la UD4, pero en este caso usando, Spring Boot y Spring MVC. Utiliza los recursos que nos ofrece el Spring. El resultado final debe contemplar el esquema entero en su globalidad. No vale únicamente con crear las tres entidades pendientes. Utiliza BootStrapData para introducir datos.(3 puntos)
 //		Una vez preparadas las lases necesarias (modelos y repositorios JPA), podemos hacer lo que se pide:
-		
+		System.out.println("##################################################");
+		System.out.println("Creamos nuevo Instructor y le asociamos el curso 1");
+		System.out.println("##################################################");
 //      Crea un nuevo objeto Instructor y guárdalo en la BD. La asociación entre Instructor y Curso será: @OneToMany bidireccional. 
 //		Crea un nuevo instructor y añádele un curso ya creado.
+		
         Instructor instructor1 = new Instructor("Beñat","Madina","bm@birt.eus");
         Address addressInstructor1 = new Address("Araba Kalea", "4","Gasteiz", "01100");
         instructor1.setAddress(addressInstructor1);
         instructor1.getCourses().add(course1);
         course1.setInstructor(instructor1);
         
+		System.out.println("######################################################");
+		System.out.println("Creamos un segundo Instructor con su instructorDetails");
+		System.out.println("######################################################");
+
 //      Crea un nuevo objeto Instructor pero esta vez junto con el objeto Instructor_detail y guárdalo en la BD. 
 //      La asociación entre Instructor e InstructorDetail será: @OneToOne bidireccional.
         
@@ -89,9 +96,13 @@ public class BootStrapData implements CommandLineRunner{
         instructor2.setInstructorDetail(instructorDetail1);
         instructorDetail1.setInstructor(instructor2);
         
+        
 //      Crea un nuevo objeto Project y guárdalo en la BD. 
 //      La asociación entre Instructor y Project será: @ManyToMany bidireccional.
-
+		System.out.println("######################################################");
+		System.out.println("Creamos un project y lo asignamos al segundo instructor");
+		System.out.println("######################################################");
+		
         Project project1 = new Project();
         project1.setName("ETHAZI");
         project1.setField("Educacion");

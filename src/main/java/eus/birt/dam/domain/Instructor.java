@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -46,11 +45,11 @@ public class Instructor extends BaseEntity{
 	@JoinColumn(name="instructor_detail_id", referencedColumnName="id")
 	private InstructorDetail instructorDetail;
 	
-	@OneToMany (cascade= {CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToMany
 	@JoinColumn (name = "instructor_id")
 	List <Course> courses = new ArrayList<>();
 	
-	@ManyToMany (cascade= {CascadeType.PERSIST, CascadeType.MERGE})
+	@ManyToMany
 	@JoinTable(name="instructor_project", joinColumns=@JoinColumn(name="instructor_id"), 
 			inverseJoinColumns=@JoinColumn(name="project_id"))
 	private Set<Project> projects = new HashSet<>();
