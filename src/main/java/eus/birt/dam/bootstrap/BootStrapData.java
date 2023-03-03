@@ -123,7 +123,11 @@ public class BootStrapData implements CommandLineRunner{
 		
 		System.out.println("Started in Bootstrap");
         System.out.println("Number of Students: " + studentRepository.count());
-        
+        System.out.println("Number of Courses: " + courseRepository.count());
+        System.out.println("Number of Instructors: " + instructorRepository.count());
+        System.out.println("Number of Projects: " + projectRepository.count());
+
+
 			
 	}
 	
