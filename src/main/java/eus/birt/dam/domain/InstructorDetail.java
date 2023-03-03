@@ -1,5 +1,6 @@
 package eus.birt.dam.domain;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
@@ -24,6 +25,6 @@ public class InstructorDetail extends BaseEntity{
 	@Column(name="hobby")
 	private String hobby;
 	
-	@OneToOne(mappedBy="instructorDetail")  //Mapped by no es con tabla, es con "objeto"
+	@OneToOne(mappedBy="instructorDetail", cascade = CascadeType.ALL)
 	private Instructor instructor;
 }

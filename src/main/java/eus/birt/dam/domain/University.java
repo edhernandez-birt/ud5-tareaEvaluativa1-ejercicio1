@@ -3,6 +3,7 @@ package eus.birt.dam.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -29,7 +30,7 @@ public class University extends BaseEntity{
 	@Embedded
 	private Address address;
 	
-	@OneToMany
+	@OneToMany (cascade = CascadeType.ALL,orphanRemoval = true)
 	@JoinColumn (name = "university_id")
 	List <Student> students = new ArrayList<>();
 

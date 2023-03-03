@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -17,7 +18,6 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -52,14 +52,14 @@ public class Student extends BaseEntity{
 	@Column (name="birthdate")
 	private LocalDate birthdate;
 	
-	@OneToOne(mappedBy="student")
+	@OneToOne(mappedBy="student",cascade=CascadeType.ALL)
 	private Tuition tuition;
 	
 	@ManyToOne
 	@JoinColumn (name = "university_id")
 	private University university;
 	
-	@ManyToMany 
+	@ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name="student_course", joinColumns=@JoinColumn(name="student_id"), 
 			inverseJoinColumns=@JoinColumn(name="course_id"))
 	private Set<Course> courses = new HashSet<>();

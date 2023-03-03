@@ -1,5 +1,8 @@
 package eus.birt.dam.domain;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -24,6 +27,7 @@ public class Tuition extends BaseEntity{
 	private Double fee;
 	
 	@OneToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name="student_id", referencedColumnName="id")
 	private Student student;
 

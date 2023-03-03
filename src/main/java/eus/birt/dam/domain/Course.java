@@ -33,7 +33,8 @@ public class Course extends BaseEntity{
 	@ManyToMany (mappedBy="courses")
 	private Set<Student> students = new HashSet<>();
 	
-	@ManyToOne @JoinColumn (name = "instructor_id")
+	@ManyToOne 
+	@JoinColumn (name = "instructor_id")
 	private Instructor instructor;
 
 	public Course(String name, int credits) {
